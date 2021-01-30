@@ -2,7 +2,7 @@
 - name: Check for the hosts of the OpenStack cloud
   os_server_facts:
     cloud: openstack
-    server: *
+#    server: all
     filters:
       deployment_name: QA
 - debug:
