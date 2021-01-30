@@ -5,4 +5,4 @@
   roles:
 #   - osp-servers
     - site-osp-instances
-    - custom_repo
+#    - custom_repo

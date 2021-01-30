@@ -19,3 +19,4 @@ openstack_instances:
     group: frontends
     deployment: QA
     security_group_name: frontend
+custom_repo: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo

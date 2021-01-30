@@ -1,15 +1,6 @@
 ---
+#it's a test, not working. Switching to create the repo on machine meta data.
 - name: Setup Repos
-  hosts: apps:frontend:appdbs
-  gather_facts: False
-  become: True
-  tags:
-    - common
-    - deploy_repos
-
-  tasks:
-    - name: Copy repo file
-      copy:
-        src: three-tier-app.repo
-        dest: "{{ custom_repo }}"
-
+  shell: yum-config-manager --add-repo="{{ custom_repo }}"
+  args:
+    creates: /etc/yum.repos.d/internal.repo
