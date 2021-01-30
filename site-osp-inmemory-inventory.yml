@@ -1,0 +1,46 @@
+---
+#execute from the path of the Multitier App installation or home!!!
+- name: Collect info from Openstack servers and use inmemory inventory to install Multi-tier app
+  hosts: localhost
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Gather information from Openstack hosts
+      os_server_info:
+        cloud: openstack
+#        region_name: regionOne
+      register: result
+
+# this play is working but we avoid it to make the execution clean
+#    - name: Print preliminary results
+#      debug:
+#        msg: "{{ result }}"
+#        var: result
+
+#   - pause
+
+#this play is not working
+#    - name: Print filtered output
+#      debug:
+#        msg:
+#          - "{{ item.name }}"
+#          - "{{ item.accessIPv4 }}"
+#          - "{{ item.metadata.group }}"
+#      loop: "{{ result.openstack_servers }}"
+#      register: resultv2
+
+    - name: Add the host to inmemory
+      add_host:
+        hostname: "{{ item.name }}"
+        groups: "{{ item.metadata.group }}"
+      loop: "{{ result.openstack_servers }}"
+#- name: Test play against In-memory inventory
+#  hosts: localhost
+#  gather_facts: false
+#  tasks:
+#    - ping:
+#      register: ping_output
+#    - debug: var=ping_output
+    - debug:
+        var: groups

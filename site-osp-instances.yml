@@ -3,4 +3,6 @@
   become: no
   gather_facts: true
   roles:
-   - osp-servers
+#   - osp-servers
+    - site-osp-instances
+    - custom_repo

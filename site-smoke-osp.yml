@@ -1,11 +1,7 @@
-- hosts: workstation
-  gather_facts: false
-  tasks:
-  - name: OpenStack servers
-  - name: Curl website
-
-  - name: Fail if 'Ansible has done its job' is not in the page content
-    fail:
-    when: "'Ansible has done its job' not in webpage.results[0].content"
-    tags:
-      - osp.smoke
+---
+#playybook for execute inmemory inventory playbook and then do the smoketest
+#
+- import_playbook: site-osp-inmemory-inventory.yml
+- import_playbook: site-smoke-osp-v2.yaml
+tags: 
+  - osp.smoke

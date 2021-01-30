@@ -1,0 +1,15 @@
+---
+- name: Setup Repos
+  hosts: apps:frontend:appdbs
+  gather_facts: False
+  become: True
+  tags:
+    - common
+    - deploy_repos
+
+  tasks:
+    - name: Copy repo file
+      copy:
+        src: three-tier-app.repo
+        dest: "{{ custom_repo }}"
+

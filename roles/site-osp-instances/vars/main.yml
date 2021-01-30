@@ -1,0 +1,21 @@
+---
+openstack_instances: 
+  - instance_name: app1
+    group: apps
+    deployment: QA
+    security_group_name: apps
+
+  - instance_name: app2
+    group: apps
+    deployment: QA
+    security_group_name: apps
+
+  - instance_name: db
+    group: appdbs
+    deployment: QA
+    security_group_name: db
+
+  - instance_name: frontend
+    group: frontends
+    deployment: QA
+    security_group_name: frontend

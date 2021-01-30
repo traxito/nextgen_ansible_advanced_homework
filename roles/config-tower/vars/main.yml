@@ -2,10 +2,12 @@
 # vars file for roles/config-tower
 org_name: Default 
 scm_branch: master 
+#scm_url: "{{ lookup('env','github_repo') }}"
+#scm_url: "https://github.com/traxito/nextgen_ansible_advanced_homework.git" 
 scm_url: "{{ github_repo }}"
-proj_name: "00_Homework Assignment"
+proj_name: "01_RHOSP"
 user_name: admin 
-password: r3dh4t1!
+password: aZBT4IEofsmq
 ssh_cred_name: "Connect_to_workstation"
 user_cred_name: "cloud-user"
 user_cred_path: "/root/.ssh/openstack.pem"

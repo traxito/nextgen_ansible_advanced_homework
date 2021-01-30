@@ -1,0 +1,41 @@
+---
+#- hosts: workstation
+#  gather_facts: false
+#  tasks:
+- name: OpenStack servers check
+  hosts: groups
+  gather_facts: false
+  tasks:
+  - name: Port 22 check alive
+    wait_for:
+#     host: "{{ item.name }}"
+      port: 22
+      retries: 20
+      delay: 2
+    loop: "{{ groups }}"
+    delegate_to: localhost
+
+- name: Curl website
+  hosts: apps
+  become: false
+  gather_facts: true
+  tasks:
+    - name: Check webservers
+      uri:
+        url: "http://{{ public_v4 }}" #mirar URL!!!
+        return_content: yes
+      until: '"alive" in webpage.content'
+      retries: 10
+      delay: 1
+      register: webpage
+      delegate_to: localhost
+    
+    - name: Fail if 'Ansible has done its job' is not in the page content
+#  hosts: apps
+#  gather_facts: false
+#  become: false
+      fail:
+#      msg: 'Service seems to be down'
+      when: "'Ansible has done its job' not in webpage.results[0].content"
+      tags:
+        - osp.smoke
