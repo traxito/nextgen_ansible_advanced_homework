@@ -2,7 +2,7 @@
 #- hosts: workstation
 #  gather_facts: false
 #  tasks:
-######################################################
+########################################################
 - name: Collect info from Openstack servers and use inmemory inventory to install Multi-tier app
   hosts: localhost
   gather_facts: false
@@ -19,24 +19,25 @@
       loop: "{{ result.openstack_servers }}"
 ########################################################
 - name: OpenStack servers check
-  hosts: groups
+  hosts: "{{ result.groups }}"
   gather_facts: false
   tasks:
-  - name: Port 22 check alive
-    wait_for:
-#     host: "{{ item.name }}"
-      port: 22
-      retries: 20
-      delay: 2
-    loop: "{{ groups }}"
+    - name: Port 22 check alive
+      wait_for:
+        host: "{{ item.name }}"
+        port: 22
+        retries: 20
+        delay: 2
+    loop: "{{ result.groups }}"
     delegate_to: localhost
 
 - name: Curl website
-  hosts: apps
+  hosts: "{{ result.openstack_servers.apps }}"
   become: false
   gather_facts: true
   tasks:
     - name: Check webservers
+      host: "{{ item.name }}"
       uri:
         url: "http://{{ public_v4 }}" #mirar URL!!!
         return_content: yes
@@ -44,7 +45,8 @@
       retries: 10
       delay: 1
       register: webpage
-      delegate_to: localhost
+    loop: "{{ result.groups }}"
+    delegate_to: localhost
     
     - name: Fail if 'Ansible has done its job' is not in the page content
 #  hosts: apps
