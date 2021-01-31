@@ -27,4 +27,4 @@
     name: "{{ item.instance_name }}"
     meta: "group={{ item.group }}, deployment_name=QA"
     state: absent
-  loop: "{{ instance_name }}"
+  loop: "{{ openstack_instances }}"
