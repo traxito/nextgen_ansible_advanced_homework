@@ -24,6 +24,7 @@
 - name: Remove instances
   os_server:
     cloud: openstack
-#    name: "{{ item.instance_name }}"
-    deployment_name: QA
+    name: "{{ item.instance_name }}"
+    meta: "group={{ item.group }}, deployment_name=QA"
     state: absent
+  loop: "{{ instance_name }}"
