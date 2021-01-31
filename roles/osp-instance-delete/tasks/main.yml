@@ -1,16 +1,29 @@
 ---
-- name: Check for the hosts of the OpenStack cloud
-  os_server_facts:
-    cloud: openstack
+#- name: Check for the hosts of the OpenStack cloud
+#  os_server_facts:
+#    cloud: openstack
 #    server: all
-    filters:
-      deployment_name: QA
-- debug:
-    var: group
-
-- name: Destroy all the environment created on QA after a failing error
-  os_server_group:
-    state: absent
-    name: group
-
+#    filters:
+#      deployment_name: QA
+#- debug:
+#    var: group
+#
+#- name: Destroy all the environment created on QA after a failing error
+#  os_server_group:
+#    state: absent
+#    name: group
+#
 # tasks file for roles/osp-instance-delete
+#- name: remove an instance
+#  openstack.cloud.server:
+#    deployment_name: QA
+#    state: absent
+
+#third option
+
+- name: Remove instances
+  os_server:
+    cloud: openstack
+#    name: "{{ item.instance_name }}"
+    deployment_name: QA
+    state: absent
