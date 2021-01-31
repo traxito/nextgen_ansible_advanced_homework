@@ -33,11 +33,12 @@
 #################################################################
 
     - name: Ping servers
+      hosts: "{{ item.private_v4 }}"
       ansible.builtin.ping:
-        host: "{{ item.private_v4 }}"
+#        host: "{{ item.private_v4 }}"
 #        retries: 20
-        delay: 2
-        timeout: 60
+#        delay: 2
+#        timeout: 60
       loop: "{{ result.openstack_servers }}"
       delegate_to: localhost
 
