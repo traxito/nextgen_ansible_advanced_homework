@@ -22,16 +22,27 @@
 #  hosts: "{{ result.openstack_servers }}"
 #  gather_facts: false
 #  tasks:
-    - name: Port 22 check alive
-      wait_for:
+#    - name: Port 22 check alive
+#      wait_for:
+#        host: "{{ item.private_v4 }}"
+#        port: 22
+#        delay: 2
+#        timeout: 60
+#      loop: "{{ result.openstack_servers }}"
+#      delegate_to: localhost
+#################################################################
+
+    - name: Ping servers
+      ansible.builtin.ping:
         host: "{{ item.private_v4 }}"
-        port: 22
 #        retries: 20
         delay: 2
         timeout: 60
       loop: "{{ result.openstack_servers }}"
       delegate_to: localhost
 
+
+##################################################################
 #- name: Curl website
 #  hosts: "{{ result.openstack_servers.apps }}"
 #  become: false
