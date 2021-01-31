@@ -19,7 +19,7 @@
       loop: "{{ result.openstack_servers }}"
 ########################################################
 - name: OpenStack servers check
-  hosts: "{{ result.groups }}"
+  hosts: "{{ result.openstack_servers }}"
   gather_facts: false
   tasks:
     - name: Port 22 check alive
@@ -28,7 +28,7 @@
         port: 22
         retries: 20
         delay: 2
-      loop: "{{ result.groups }}"
+      loop: "{{ result.openstack_servers }}"
       delegate_to: localhost
 
 - name: Curl website
