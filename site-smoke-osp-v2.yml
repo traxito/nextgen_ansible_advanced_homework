@@ -24,10 +24,11 @@
 #  tasks:
     - name: Port 22 check alive
       wait_for:
-        host: "{{ item.name }}"
+        host: "{{ item.private_v4 }}"
         port: 22
 #        retries: 20
-        delay: 5
+        delay: 2
+        timeout: 60
       loop: "{{ result.openstack_servers }}"
       delegate_to: localhost
 
