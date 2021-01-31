@@ -33,8 +33,8 @@
 #################################################################
 
     - name: Ping servers
-      hosts: "{{ item.private_v4 }}"
-      ansible.builtin.ping:
+#      hosts: "{{ item.private_v4 }}"
+      shell: ping -c 1 -w 2 {{ item.private_v4 }}
 #        host: "{{ item.private_v4 }}"
 #        retries: 20
 #        delay: 2
