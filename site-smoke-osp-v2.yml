@@ -18,10 +18,10 @@
         groups: "{{ item.metadata.group }}"
       loop: "{{ result.openstack_servers }}"
 ########################################################
-- name: OpenStack servers check
-  hosts: "{{ result.openstack_servers }}"
-  gather_facts: false
-  tasks:
+#- name: OpenStack servers check
+#  hosts: "{{ result.openstack_servers }}"
+#  gather_facts: false
+#  tasks:
     - name: Port 22 check alive
       wait_for:
         host: "{{ item.name }}"
@@ -31,11 +31,11 @@
       loop: "{{ result.openstack_servers }}"
       delegate_to: localhost
 
-- name: Curl website
-  hosts: "{{ result.openstack_servers.apps }}"
-  become: false
-  gather_facts: true
-  tasks:
+#- name: Curl website
+#  hosts: "{{ result.openstack_servers.apps }}"
+#  become: false
+#  gather_facts: true
+#  tasks:
     - name: Check webservers
 #      host: "{{ item.name }}"
       uri:
