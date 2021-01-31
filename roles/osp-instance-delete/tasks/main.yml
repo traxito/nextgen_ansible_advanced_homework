@@ -25,6 +25,6 @@
   os_server:
     cloud: openstack
     name: "{{ item.instance_name }}"
-    meta: "group={{ item.group }}, deployment_name=QA"
+#    meta: "group={{ item.group }}, deployment_name=QA"
     state: absent
   loop: "{{ openstack_instances }}"
