@@ -33,7 +33,7 @@
 
 - name: Setup Repos
 #  become: yes
-  shell: yum-config-manager --add-repo="{{ custom_repo }}"
+  shell: sudo yum-config-manager --add-repo="{{ custom_repo }}"
   args:
     creates: /etc/yum.repos.d/internal.repo
   loop: "{{ openstack_instances }}"
