@@ -2,6 +2,22 @@
 #- hosts: workstation
 #  gather_facts: false
 #  tasks:
+######################################################
+- name: Collect info from Openstack servers and use inmemory inventory to install Multi-tier app
+  hosts: localhost
+  gather_facts: false
+  connection: local
+  tasks:
+    - name: Gather information from Openstack hosts
+      os_server_info:
+        cloud: openstack
+      register: result
+    - name: Add the host to inmemory
+      add_host:
+        hostname: "{{ item.name }}"
+        groups: "{{ item.metadata.group }}"
+      loop: "{{ result.openstack_servers }}"
+########################################################
 - name: OpenStack servers check
   hosts: groups
   gather_facts: false
@@ -37,5 +53,5 @@
       fail:
 #      msg: 'Service seems to be down'
       when: "'Ansible has done its job' not in webpage.results[0].content"
-      tags:
-        - osp.smoke
+#      tags:
+#        - osp.smoke

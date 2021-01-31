@@ -1,7 +1,7 @@
 ---
 #playybook for execute inmemory inventory playbook and then do the smoketest
 #
-- import_playbook: site-osp-inmemory-inventory.yml
+#- import_playbook: site-osp-inmemory-inventory.yml
 - import_playbook: site-smoke-osp-v2.yml
 #  tags: 
 #    - osp.smoke
