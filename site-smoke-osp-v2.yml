@@ -28,8 +28,8 @@
         port: 22
         retries: 20
         delay: 2
-    loop: "{{ result.groups }}"
-    delegate_to: localhost
+      loop: "{{ result.groups }}"
+      delegate_to: localhost
 
 - name: Curl website
   hosts: "{{ result.openstack_servers.apps }}"
@@ -45,8 +45,8 @@
       retries: 10
       delay: 1
       register: webpage
-    loop: "{{ result.groups }}"
-    delegate_to: localhost
+      loop: "{{ result.groups }}"
+      delegate_to: localhost
     
     - name: Fail if 'Ansible has done its job' is not in the page content
 #  hosts: apps
