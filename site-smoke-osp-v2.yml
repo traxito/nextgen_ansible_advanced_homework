@@ -37,15 +37,15 @@
   gather_facts: true
   tasks:
     - name: Check webservers
-      host: "{{ item.name }}"
+#      host: "{{ item.name }}"
       uri:
-        url: "http://{{ public_v4 }}" #mirar URL!!!
+        url: "http://{{ result.openstack_servers.apps.public_v4 }}" #mirar URL!!!
         return_content: yes
       until: '"alive" in webpage.content'
       retries: 10
       delay: 1
       register: webpage
-      loop: "{{ result.groups }}"
+      loop: "{{ result.openstack_servers.apps }}"
       delegate_to: localhost
     
     - name: Fail if 'Ansible has done its job' is not in the page content
