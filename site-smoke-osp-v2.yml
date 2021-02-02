@@ -49,7 +49,7 @@
 #having problems with the variable to be readed by Tower, trying to store it
     - name: Store the variable
       set_fact:
-        smoke_ip: "{{ hostname }}"
+        smoke_ip: "{{ result.hostname }}"
 #      debug:
 #        msg: "{{ smoke_ip }}"
 #- name: Curl website
