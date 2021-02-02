@@ -53,13 +53,13 @@
     - name: Check webservers
 #      host: "{{ item.result.openstack_servers.metadata.groups.apps }}"
       uri:
-        url: "http://{{ item.name }}"
+        url: "http://{{ item.host_name }}"
         return_content: yes
       until: '"alive" in webpage.content'
       retries: 10
       delay: 1
       register: webpage
-      loop: "{{ result.openstack_servers.name }}"
+      loop: "{{ result.openstack_servers.host_name }}"
       delegate_to: localhost
     
     - name: Fail if 'Ansible has done its job' is not in the page content
