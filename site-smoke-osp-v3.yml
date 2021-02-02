@@ -14,7 +14,7 @@
         name: "{{ item.public_v4 }}"
         group:
           - "{{ item.metadata.group }}"
-          - "{{ item.metadata.deployment_name }}"
+#          - "{{ item.metadata.deployment_name }}"
       loop: "{{ __openstack_instances.ansible_facts.openstack_servers }}"
 
     - name: Set frontend IP to variable
