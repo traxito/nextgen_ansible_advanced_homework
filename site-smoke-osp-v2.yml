@@ -15,7 +15,7 @@
       register: result
     - name: Add the host to inmemory
       add_host:
-        hostname: "{{ item.name }}"
+        hostname: "{{ item.accessIPv4 }}"
         groups: "{{ item.metadata.group }}"
       loop: "{{ result.openstack_servers }}"
 ########################################################
@@ -53,13 +53,13 @@
     - name: Check webservers
 #      host: "{{ item.result.openstack_servers.metadata.groups.apps }}"
       uri:
-        url: "http://{{ item.result.openstack_servers.accessIPv4 }}"
+        url: "http://{{ item.name }}"
         return_content: yes
       until: '"alive" in webpage.content'
       retries: 10
       delay: 1
       register: webpage
-      loop: "{{ result.openstack_servers.accessIPv4 }}"
+      loop: "{{ result.openstack_servers.name }}"
       delegate_to: localhost
     
     - name: Fail if 'Ansible has done its job' is not in the page content
