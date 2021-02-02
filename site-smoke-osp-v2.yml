@@ -50,8 +50,8 @@
     - name: Store the variable
       set_fact:
         smoke_ip: "{{ hostname }}"
-      debug:
-        msg: "{{ smoke_ip }}"
+#      debug:
+#        msg: "{{ smoke_ip }}"
 #- name: Curl website
 #  hosts: "{{ result.openstack_servers.apps }}"
 #  become: false
