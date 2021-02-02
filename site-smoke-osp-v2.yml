@@ -45,21 +45,28 @@
 
 
 ##################################################################
+
+#having problems with the variable to be readed by Tower, trying to store it
+    - name: Store the variable
+      set_fact:
+        smoke_ip: "{{ hostname }}"
+      debug:
+        msg: "{{ smoke_ip }}"
 #- name: Curl website
 #  hosts: "{{ result.openstack_servers.apps }}"
 #  become: false
 #  gather_facts: true
 #  tasks:
     - name: Check webservers
-#      host: "{{ item.result.openstack_servers.metadata.groups.apps }}"
+#      host: "{{ smoke_ip }}"
       uri:
-        url: "http://{{ item.host_name }}"
+        url: "http://{{ item.smoke_ip }}"
         return_content: yes
       until: '"alive" in webpage.content'
       retries: 10
       delay: 1
       register: webpage
-      loop: "{{ result.openstack_servers.host_name }}"
+      loop: "{{ smoke_ip }}"
       delegate_to: localhost
     
     - name: Fail if 'Ansible has done its job' is not in the page content
