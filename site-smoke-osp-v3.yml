@@ -1,0 +1,38 @@
+---
+- hosts: localhost
+  gather_facts: False
+  tasks:
+    - name: Gather instance Info
+      os_server_facts:
+        cloud: openstack
+        region_name: regionOne
+        server: front*
+      register: __openstack_instances
+
+    - name: Add each gathered instance as host
+      add_host:
+        name: "{{ item.public_v4 }}"
+        group:
+          - "{{ item.metadata.group }}"
+          - "{{ item.metadata.deployment_name }}"
+      loop: "{{ __openstack_instances.ansible_facts.openstack_servers }}"
+
+    - name: Set frontend IP to variable
+      set_fact:
+        __frontendIP: "{{ __openstack_instances.ansible_facts.openstack_servers[0].accessIPv4 }}"
+
+    - name: Check the webserver for expected response
+      uri:
+        url: "http://{{ __frontendIP }}/index.html"
+        return_content: yes
+      register: __frontend_response
+
+    - name: Dispaly the contents of the page
+      debug:
+        msg: "{{ __frontend_response.content }}"
+
+    - name: Fail if 'Ansible has done its job' is not in the page content
+      fail:
+      when: "'Ansible has done its job' not in __frontend_response.content"
+      tags:
+        - osp.smoke
