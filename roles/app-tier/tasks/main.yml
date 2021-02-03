@@ -1,2 +1,19 @@
 ---
 
+- name: install Tomcat
+  package:
+    name: tomcat
+    state: present
+
+- name: Change the main paig of Tomcat
+  template:
+    src: index.html.j2
+    dest: "{{ tomcat_web_root }}"
+    mode: 0644
+  notify: start_tomcat
+
+- name: enable Tomcat
+  service:
+    name: tomcat
+    enabled: yes
+
