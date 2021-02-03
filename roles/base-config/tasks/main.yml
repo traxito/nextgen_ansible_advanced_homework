@@ -9,6 +9,12 @@
     backup: yes
 
 - name: enable repos
+  template:
+    src: repos_templates.j2
+    dest: /etc/yum.repos.d/open_three-tier-app.repo
+    owner: root
+    group: root
+    mode: 0644
  
-- name: install base tools and packages
+#- name: install base tools and packages
 
