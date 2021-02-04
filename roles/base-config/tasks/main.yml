@@ -19,5 +19,10 @@
 - name: enable repo
   shell: yum-config-manager --enable open_three-tier-app.repo
  
-#- name: install base tools and packages
+- name: install base tools and packages
+  yum:
+    name:
+      - httpd
+      - haproxy
+    state: latest
 
