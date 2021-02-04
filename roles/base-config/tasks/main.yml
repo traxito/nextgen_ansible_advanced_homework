@@ -10,7 +10,7 @@
 
 - name: enable repos
   template:
-    src: repos_templates.j2
+    src: repos_template.j2
     dest: /etc/yum.repos.d/open_three-tier-app.repo
     owner: root
     group: root
