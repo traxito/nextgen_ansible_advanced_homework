@@ -1,6 +1,6 @@
 ---
 - name: Install load balancer packages
-  package:
+  yum:
     name: "{{ load_balancer_packages }}"
     state: present
 
@@ -14,6 +14,6 @@
   service:
     name: haproxy
     state: started
-    enabled: true-
+    enabled: true
 
 
