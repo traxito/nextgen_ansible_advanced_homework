@@ -17,7 +17,7 @@
     mode: 0644
 
 - name: enable repo
-  shell: yum-config-manager --enable epel.repo
+  shell: yum-config-manager --enable open_three-tier-app.repo
  
 #- name: install base tools and packages
 
