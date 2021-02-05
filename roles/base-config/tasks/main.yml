@@ -19,10 +19,10 @@
 - name: enable repo
   shell: yum-config-manager --enable epel.repo
  
-- name: install base tools and packages
-  yum:
-    name:
-      - httpd
-      - haproxy
-    state: latest
+#- name: install base tools and packages
+#  yum:
+#    name:
+#      - httpd
+#      - haproxy
+#    state: latest
 
