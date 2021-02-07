@@ -48,7 +48,7 @@
     tower_username: admin
     tower_password: LhUZnVB1fcsV
     tower_verify_ssl: no
-    ssh_key_data: /root/.ssh/mykey.pem
+    ssh_key_data: /root/.ssh/azuretest.pem
     username: "{{ opentlc_login }}"
 
 - name: Remove secret

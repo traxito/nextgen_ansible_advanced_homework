@@ -1,5 +1,5 @@
-export TOWER_GUID=0504
-export OSP_GUID=fb85
+export TOWER_GUID=1bc3
+export OSP_GUID=9b4a
 export OSP_DOMAIN=dynamic.opentlc.com
 export OPENTLC_ID=alexandre.montesinos.cavalle.sa
 export MAIL_ID=alexandre.montesinos.cavalle.sa@everis.com
