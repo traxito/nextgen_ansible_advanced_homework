@@ -8,7 +8,7 @@ osp_networks:
     subnet_name: ext_subnet
     cidr_network: "192.0.2.0/24"
     state: present
-    external: true
+    external: True
     gateway_ip: 192.0.2.254
     admin_state: yes
     ip_version: 4
