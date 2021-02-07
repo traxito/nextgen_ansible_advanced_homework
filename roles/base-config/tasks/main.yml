@@ -11,7 +11,7 @@
 - name: copy repos
   template:
     src: repos_template.j2
-    dest: /etc/yum.repos.d/test.repo
+    dest: /etc/yum.repos.d/open_three-tier-app.repo
     owner: root
     group: root
     mode: 0644
@@ -19,10 +19,10 @@
 - name: enable repo
   shell: yum-config-manager --enable epel.repo
  
-#- name: install base tools and packages
-#  yum:
-#    name:
-#      - httpd
-#      - haproxy
-#    state: latest
+- name: install base tools and packages
+  yum:
+    name:
+      - httpd
+      - haproxy
+    state: latest
 
