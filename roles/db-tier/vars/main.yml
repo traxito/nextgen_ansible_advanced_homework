@@ -13,13 +13,13 @@ postgres_service: postgresql-10.service
 postgres_port: 5432
 postgres_user: postgres
 postgres_users:
-  - name: flask
+  - name: tomcat
     password: redhat
-    database: flask_db
+    database: tomcat_db
     state: present
     priv: ALL
 postgres_databases:
-  - name: flask_db
-    owner: flask
+  - name: tomcat
+    owner: tomcat
   - name: books_store
-    owner: flask
+    owner: tomcat
