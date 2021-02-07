@@ -6,8 +6,10 @@ scm_branch: master
 #scm_url: "https://github.com/traxito/nextgen_ansible_advanced_homework.git" 
 scm_url: "{{ github_repo }}"
 proj_name: "01_RHOSP"
+proj_scm_type: git
+proj_scm_url: https://github.com/traxito/nextgen_ansible_advanced_homework.git
 user_name: admin 
-password: aZBT4IEofsmq
+password: LhUZnVB1fcsV
 ssh_cred_name: "Connect_to_workstation"
 user_cred_name: "cloud-user"
 user_cred_path: "/root/.ssh/openstack.pem"
