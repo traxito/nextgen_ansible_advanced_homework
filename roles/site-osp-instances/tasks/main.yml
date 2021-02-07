@@ -28,6 +28,23 @@
     wait: true
     timeout: 200
   loop: "{{ openstack_instances }}"
+  
+- name: OpenStack servers
+  os_server_facts:
+    cloud: openstack
+  register: result
+  tags:
+    - test.servers
+
+- name: Wait for server to be available
+  wait_for:
+    host: "{{ item.public_v4 }}"
+    port: 22
+    search_regex: OpenSSH
+    timeout: 120
+  delegate_to: "{{ inventory_hostname }}"
+  with_items:
+    - "{{ result.ansible_facts.openstack_servers }}"
 
 #- name: Setup Repos
 #  become: yes
