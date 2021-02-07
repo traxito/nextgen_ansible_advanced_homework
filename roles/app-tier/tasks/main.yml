@@ -4,6 +4,11 @@
   package:
     name: tomcat
     state: present
+    
+- name: Create the Tomcat content directory
+  file:
+    path: "{{ tomcat_web_root }}"
+    state: directory
 
 - name: Change the main paig of Tomcat
   template:
