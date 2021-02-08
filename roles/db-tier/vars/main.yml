@@ -15,7 +15,7 @@ postgres_user: postgres
 postgres_users:
   - name: tomcat
     password: redhat
-    database: tomcat_db
+    database: tomcat
     state: present
     priv: ALL
 postgres_databases:
