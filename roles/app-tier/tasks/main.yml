@@ -13,7 +13,7 @@
 - name: Change the main paig of Tomcat
   template:
     src: index.html.j2
-    dest: "{{ tomcat_web_root }}"
+    dest: /usr/share/tomcat/webapps/ROOT/index.html
     mode: 0644
   notify: start_tomcat
 
