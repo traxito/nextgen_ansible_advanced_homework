@@ -24,7 +24,7 @@
       organization: Default
       state: present
       kind: ssh
-      tower_host: tower1.{{tower_guid}}.example.opentlc.com
+      tower_host: tower1.{{ tower_guid }}.example.opentlc.com
       tower_username: admin
       tower_password: U94kCnLdKk2x
       tower_verify_ssl: no
@@ -34,25 +34,25 @@
     tower_job_template:
       name: "09_3 tier app on Prod"
       credential: "Creds for AWS instances"
-      tower_host: tower1.{{tower_guid}}.example.opentlc.com
+      tower_host: tower1.{{ tower_guid }}.example.opentlc.com
       tower_username: admin
       tower_password: U94kCnLdKk2x
       tower_verify_ssl: no
       state: present
       job_type: run
       playbook: site-3tier-app.yml
-      project: "00_Homework Assignment"
+      project: "01_RHOSP"
   - name: Update Prod Smoke Job template
     tower_job_template:
       name: "10_Smoke test Prod env"
       credential: "Creds for AWS instances"
-      tower_host: tower1.{{tower_guid}}.example.opentlc.com
+      tower_host: tower1.{{ tower_guid }}.example.opentlc.com
       tower_username: admin
       tower_password: U94kCnLdKk2x
       tower_verify_ssl: no
       state: present
       job_type: run
       playbook: site-smoketest-aws.yml
-      project: "00_Homework Assignment"
+      project: "01_RHOSP"
 
     
