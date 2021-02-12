@@ -31,12 +31,6 @@
           export uri=https://labs.opentlc.com
         dest: /root/credential.rc
         mode: 0755
-        
-    - name: Ensure python is a valid and available command
-      file:
-        src: /bin/python3
-        dest: /bin/python
-        state: link
 
     # Fix the existing shell scripts to reference jq command with bin/jq
     - name: fix scripts
