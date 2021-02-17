@@ -4,19 +4,27 @@ openstack_instances:
     group: apps
     deployment: QA
     security_group_name: apps
+    meta:
+      - { group: apps, deployment_name: QA}
 
   - instance_name: app2
     group: apps
     deployment: QA
     security_group_name: apps
+    meta:
+      - { group: apps, deployment_name: QA}
 
   - instance_name: db
     group: appdbs
     deployment: QA
     security_group_name: db
+    meta:
+      - { group: appdbs, deployment_name: QA}
 
   - instance_name: frontend
     group: frontends
     deployment: QA
     security_group_name: frontend
+    meta:
+      - { group: frontends, deployment_name: QA}
 #custom_repo: http://www.opentlc.com/download/ansible_bootcamp/repo/internal.repo
