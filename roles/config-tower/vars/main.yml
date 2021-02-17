@@ -1,11 +1,9 @@
 ---
 # vars file for roles/config-tower
 org_name: Default 
-scm_branch: master 
-#scm_url: "{{ lookup('env','github_repo') }}"
-#scm_url: "https://github.com/traxito/nextgen_ansible_advanced_homework.git" 
+scm_branch: master
 scm_url: "{{ github_repo }}"
-proj_name: "01_RHOSP"
+proj_name: "00_Homework Assignment"
 proj_scm_type: git
 proj_scm_url: https://github.com/traxito/nextgen_ansible_advanced_homework.git
 user_name: admin 
