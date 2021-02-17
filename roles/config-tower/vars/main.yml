@@ -7,7 +7,7 @@ proj_name: "00_Homework Assignment"
 proj_scm_type: git
 proj_scm_url: https://github.com/traxito/nextgen_ansible_advanced_homework.git
 user_name: admin 
-password: LhUZnVB1fcsV
+password: 41SBkRPMUPRc
 ssh_cred_name: "Connect_to_workstation"
 user_cred_name: "cloud-user"
 user_cred_path: "/root/.ssh/openstack.pem"
